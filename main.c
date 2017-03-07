@@ -4,5 +4,6 @@
 int main()	{
 	printf("Hello World\n");
 	system("PAUSE");
+	/*altro*/
 	return 0;
 }
