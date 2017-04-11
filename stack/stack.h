@@ -13,21 +13,23 @@ typedef int * STACKel;
 
 STACK stack_init();
 
-void stack_push(STACK S, int key);
+void stack_func_generate(STACK pila);
 
-int stack_pop(STACK S);
+void stack_push(STACK pila, int key);
+
+int stack_pop(STACK pila);
+
+STACK stack_free(STACK pila, int del_complete);
 
 STACKel stack_freeNode(STACKel curr);
 
-void stack_reverse(STACK S, STACK tmp);
+void stack_reverse(STACK pila, STACK tmp);
 
-void stack_print(STACK S);
+void stack_print(STACK pila);
 
-void stack_random(STACK S, int n);
+int stack_isEmpty(STACK pila);
 
-int stack_isEmpty(STACK S);
-
-int stack_isFull(STACK S);
+int stack_isFull(STACK pila);
 
 
 #endif
