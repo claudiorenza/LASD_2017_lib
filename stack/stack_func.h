@@ -2,6 +2,16 @@
 #define STACK_FUNC_H_INCLUDED
 
 #include <stdio.h>
+#include "io.h"
+#include "random.h"
+#include "stack.h"
+
+#define MAX_array 256
+
+typedef int ** STACK;
+typedef int * STACKel;
+
+int stack_func_menu(int isEmpty);
 
 void stack_func_insertKey(STACK pila);
 

@@ -53,7 +53,7 @@ STACK stack_free(STACK pila, int del_complete)	{   //il parametro 'del_complete'
 //Deallocazione del nodo estratto
 STACKel stack_freeNode(STACKel curr)	{
 	free(curr);
-	return NULL
+	return NULL;
 }
 
 //Ordinamento inverso dello Stack utile per la stampa

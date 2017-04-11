@@ -2,6 +2,7 @@
 #include <time.h>
 
 #include "stack.h"
+#include "stack_func.h"
 
 int main()  {
     srand(time(NULL));		//funzione per la generazione casuale di valori

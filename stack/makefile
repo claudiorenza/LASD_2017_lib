@@ -7,10 +7,10 @@ CC      = gcc
 CCFLAGS = -g -Wall
 RM      = rm -rf
 
-SRC = num.c \
-	random.c \
+SRC = random.c \
 	io.c \
-	stack.c
+	stack.c \
+	stack_func
 
 OBJ = $(SRC:.c=.o)
 

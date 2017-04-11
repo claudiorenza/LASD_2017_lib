@@ -27,10 +27,10 @@ int stack_func_menu(int isEmpty)	{
 
 //Generazione di uno Stack con valori randomici
 void stack_func_generate(STACK pila) {
-    int idx;
+    int idx, n_elem;
     do  {
         printf("Quanti elementi vuoi inserire nello Stack? (1-%d): ", MAX_array);
-        if(n_elem = io_getInteger()) < 1 || n_elem > MAX_array)
+        if((n_elem = io_getInteger()) < 1 || n_elem > MAX_array)
 			printf("ATTENZIONE: Valore non valido\n\n");
 	}while(n_elem < 1 || n_elem > MAX_array);
 
