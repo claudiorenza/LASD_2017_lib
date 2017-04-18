@@ -2,9 +2,17 @@
 
 //Inizializzazione dello stack di MAX_array elementi
 STACK stack_init() {
-    STACK pila = (int **)calloc(MAX_array, sizeof(int *));
-	pila[0] = (int *)malloc(sizeof(int));
-	*(pila[0]) = 0;
+	STACK pila = NULL;
+    if(pila = (int **)calloc(MAX_array, sizeof(int *)))	{
+		if(!(pila[0] = (int *)malloc(sizeof(int))))	{
+			printf("[MEM] ATTENZIONE: Problema di allocazione STACKel - stack_init\n");
+			exit(1);
+		}
+		*(pila[0]) = 0;
+	} else  {
+		printf("[MEM] ATTENZIONE: Problema di allocazione STACK - stack_init\n");
+		exit(1);
+	}
     return pila;
 }
 
@@ -13,7 +21,10 @@ STACK stack_init() {
 void stack_push(STACK pila, int key){
 	if(!stack_isFull(pila)){
 		*(pila[0]) += 1;
-		pila[*(pila[0])] = (int *)malloc(sizeof(int));
+		if(!(pila[*(pila[0])] = (int *)malloc(sizeof(int))))	{
+			printf("[MEM] ATTENZIONE: Problema di allocazione STACKel - stack_push\n");
+			exit(1);
+		}
 		*(pila[*(pila[0])]) = key;
 	} else 
 		printf("[STACK] ATTENZIONE: lo Stack è pieno - stack_push\n\n");
