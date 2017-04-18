@@ -2,6 +2,7 @@
 #define STACK_FUNC_H_INCLUDED
 
 #include <stdio.h>
+#include <ctype.h>
 #include "io.h"
 #include "random.h"
 #include "stack.h"

@@ -12,7 +12,7 @@ STACK stack_init() {
 //Inserimento in testa dell'elemento nello Stack
 void stack_push(STACK pila, int key){
 	if(!stack_isFull(pila)){
-		*(pila[0])++;
+		*(pila[0]) += 1;
 		pila[*(pila[0])] = (int *)malloc(sizeof(int));
 		*(pila[*(pila[0])]) = key;
 	} else 
@@ -25,7 +25,7 @@ int stack_pop(STACK pila)	{
 	if(!stack_isEmpty(pila))	{
 		int val = *(pila[*(pila[0])]);
 		pila[*(pila[0])] = stack_freeNode(pila[*(pila[0])]);
-		*(pila[0])--;
+		*(pila[0]) -= 1;
 		return val;
 	} else {
 		printf("[STACK] ATTENZIONE: lo Stack è vuoto - stack_pop\n\n");
@@ -73,7 +73,7 @@ void stack_print(STACK pila){
 	if(!stack_isEmpty(pila)){
 		key = stack_pop(pila);
 		printf(" %d", key);
-		print_stack(pila);
+		stack_print(pila);
 		stack_push(pila, key);
 	}
 }

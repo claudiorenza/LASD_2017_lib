@@ -10,7 +10,7 @@ RM      = rm -rf
 SRC = random.c \
 	io.c \
 	stack.c \
-	stack_func
+	stack_func.c
 
 OBJ = $(SRC:.c=.o)
 
