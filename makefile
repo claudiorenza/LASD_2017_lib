@@ -7,10 +7,10 @@ CC      = gcc
 CCFLAGS = -g -Wall
 RM      = rm -rf
 
-SRC = random.c \
-	io.c \
-	stack.c \
-	stack_func.c
+SRC = stack/random.c \
+	stack/io.c \
+	stack/stack.c \
+	stack/stack_func.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -21,5 +21,5 @@ all: $(OBJ)
 	@echo "Build complete"
 	
 clean:
-	$(RM) *.dSYM *.o stackApp
+	$(RM) *.dSYM stack/*.o *.o stackApp
 	@echo "Clean complete"
