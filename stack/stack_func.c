@@ -46,9 +46,9 @@ void stack_func_generate(STACK pila) {
     
     do  {
         printf("Quanti elementi vuoi inserire nello Stack? (1-%d): ", MAX_array-*(pila[0]));
-        if((n_elem = io_getInteger()) < 1 || n_elem > MAX_array)
+        if((n_elem = io_getInteger()) < 1 || n_elem > MAX_array-*(pila[0]))
 			printf("ATTENZIONE: Valore non valido\n\n");
-	}while(n_elem < 1 || n_elem > MAX_array);
+	}while(n_elem < 1 || n_elem > MAX_array-*(pila[0]));
 
     for(idx=0;idx<n_elem;idx++)
         stack_push(pila, random_num(1, MAX_array));	//inserisce un numero casuale compreso fra 1 e MAX_array
