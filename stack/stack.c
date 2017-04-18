@@ -72,7 +72,7 @@ void stack_print(STACK pila){
 	int key;
 	if(!stack_isEmpty(pila)){
 		key = stack_pop(pila);
-		printf(" %d", key);
+		printf("%d\n", key);
 		stack_print(pila);
 		stack_push(pila, key);
 	}

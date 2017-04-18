@@ -23,7 +23,7 @@ int main()  {
 				break;
 			case 3:
 				printf("STAMPA STACK\n\n");
-                stack_print(pila);
+                stack_func_print(pila);
 				break;
 			case 4:
 				printf("ESTRAZIONE ELEMENTO IN TESTA\n\n");

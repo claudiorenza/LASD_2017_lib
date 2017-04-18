@@ -28,14 +28,32 @@ int stack_func_menu(int isEmpty)	{
 //Generazione di uno Stack con valori randomici
 void stack_func_generate(STACK pila) {
     int idx, n_elem;
+    if(!stack_isEmpty(pila))	{	//se è già presente, chiedo al'utente quale operazione effettuare sullo Stack
+        int choice;
+        printf("ATTENZIONE: Stack già presente. Cosa preferisci fare?\n\t1. Generazione nuovo Stack\t2. Inserimento nuovi elementi\n\n");
+        do  {
+            printf("SCELTA: ");
+            if((choice = io_getInteger()) < 1 || choice > 2)
+                printf("ATTENZIONE: Valore non valido\n\n");
+        }while(choice < 1 || choice > 2);
+        if(choice == 1) {
+            pila = stack_free(pila, 0);   //con '0' in parametro non elimino completamente lo Stack ma solo tutti i puntatori al suo interno
+            printf("\n");
+            if(stack_isEmpty(pila))
+                printf("Stack eliminato\n\n");
+        }
+    }
+    
     do  {
-        printf("Quanti elementi vuoi inserire nello Stack? (1-%d): ", MAX_array);
+        printf("Quanti elementi vuoi inserire nello Stack? (1-%d): ", MAX_array-*(pila[0]));
         if((n_elem = io_getInteger()) < 1 || n_elem > MAX_array)
 			printf("ATTENZIONE: Valore non valido\n\n");
 	}while(n_elem < 1 || n_elem > MAX_array);
 
     for(idx=0;idx<n_elem;idx++)
         stack_push(pila, random_num(1, MAX_array));	//inserisce un numero casuale compreso fra 1 e MAX_array
+    printf("\n");
+    stack_func_print(pila);
 }
 
 void stack_func_insertKey(STACK pila)   {
@@ -48,13 +66,14 @@ void stack_func_insertKey(STACK pila)   {
         }while(val < 1 || val > MAX_array);
 
         stack_push(pila, val);
-        stack_print(pila);
+        printf("\n");
+        stack_func_print(pila);
     } else
         printf("ATTENZIONE: lo Stack è pieno\n\n");
 }
 
 void stack_func_extract(STACK pila) {
-    printf("Valore in testa nello Stack: %d\n", *(pila[1]));   //nel Tableau il valore minimo è situato alla radice [1][1], con accesso a tempo costante O(1)
+    printf("Valore in testa nello Stack: %d\n", *(pila[*(pila[0])]));   //nel Tableau il valore minimo è situato alla radice [1][1], con accesso a tempo costante O(1)
     char choice;
     do  {
         printf("Desideri estrarlo? (S/N): ");
@@ -66,7 +85,7 @@ void stack_func_extract(STACK pila) {
     if(choice == 'S')   {
         printf("Valore estratto: %d\n\n", stack_pop(pila));
         if(!stack_isEmpty(pila))
-            stack_print(pila);
+            stack_func_print(pila);
         else
             printf("ATTENZIONE: Stack svuotato\n\n");
     }
@@ -82,8 +101,14 @@ void stack_func_delete(STACK pila)  {
     }while(choice != 'S' && choice != 'N');
 
     if(choice == 'S')   {
-        pila = stack_free(pila, 0);   //con '0' in parametro non elimino completamente l'matrice ma solo tutti i puntatori al suo interno
+        pila = stack_free(pila, 0);   //con '0' in parametro non elimino completamente lo Stack ma solo tutti i puntatori al suo interno
+        printf("\n");
         if(stack_isEmpty(pila))
             printf("Stack eliminato\n\n");
     }
+}
+
+void stack_func_print(STACK pila)  {
+    stack_print(pila);
+    printf("\tNumero elementi: %d\n", *(pila[0]));
 }

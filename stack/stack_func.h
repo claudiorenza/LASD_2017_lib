@@ -20,5 +20,7 @@ void stack_func_extract(STACK pila);
 
 void stack_func_delete(STACK pila);
 
+void stack_func_print(STACK pila);
+
 
 #endif
