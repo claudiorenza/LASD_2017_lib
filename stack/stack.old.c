@@ -56,6 +56,16 @@ STACKel stack_freeNode(STACKel curr)	{
 	return NULL;
 }
 
+//Ordinamento inverso dello Stack utile per la stampa
+void stack_reverse(STACK pila, STACK tmp){
+	int key;
+	if(!stack_isEmpty(pila)){
+		key = stack_pop(pila);
+		stack_push(tmp, key);
+		stack_reverse(pila, tmp);
+		stack_push(pila, key);
+	}
+}
 
 //Stampa dello Stack 
 void stack_print(STACK pila){

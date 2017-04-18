@@ -23,6 +23,8 @@ STACK stack_free(STACK pila, int del_complete);
 
 STACKel stack_freeNode(STACKel curr);
 
+void stack_reverse(STACK pila, STACK tmp);
+
 void stack_print(STACK pila);
 
 int stack_isEmpty(STACK pila);
