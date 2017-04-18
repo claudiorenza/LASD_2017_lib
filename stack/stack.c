@@ -3,7 +3,7 @@
 //Inizializzazione dello stack di MAX_array elementi
 STACK stack_init() {
 	STACK pila = NULL;
-    if(pila = (int **)calloc(MAX_array, sizeof(int *)))	{
+    if((pila = (int **)calloc(MAX_array, sizeof(int *))))	{
 		if(!(pila[0] = (int *)malloc(sizeof(int))))	{
 			printf("[MEM] ATTENZIONE: Problema di allocazione STACKel - stack_init\n");
 			exit(1);
