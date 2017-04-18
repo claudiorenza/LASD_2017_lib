@@ -33,6 +33,15 @@ int stack_pop(STACK pila)	{
 	}
 }
 
+//Visualizzazione dell'elemento in testa allo Stack
+int stack_top(STACK pila)	{
+	if(!stack_isEmpty(pila))	{
+		return *(pila[*(pila[0])]);;
+	} else {
+		printf("[STACK] ATTENZIONE: lo Stack è vuoto - stack_pop\n\n");
+		return 0;
+	}
+}
 
 //Liberazione efficiente della memoria allocata dinamicamente
 STACK stack_free(STACK pila, int del_complete)	{   //il parametro 'del_complete' == 1 libera memoria in fase di chiusura dell'applicazione
