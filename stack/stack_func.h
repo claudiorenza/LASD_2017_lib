@@ -3,8 +3,8 @@
 
 #include <stdio.h>
 #include <ctype.h>
-#include "io.h"
-#include "random.h"
+#include "../io/io.h"
+#include "../io/random.h"
 #include "stack.h"
 
 #define MAX_array 256

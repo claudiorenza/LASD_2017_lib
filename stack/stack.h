@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "random.h"
+#include "../io/random.h"
 
 #define MAX_array 256
 

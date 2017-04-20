@@ -7,8 +7,8 @@ CC      = gcc
 CCFLAGS = -g -Wall
 RM      = rm -rf
 
-SRC = stack/random.c \
-	stack/io.c \
+SRC = io/random.c \
+	io/io.c \
 	stack/stack.c \
 	stack/stack_func.c
 
