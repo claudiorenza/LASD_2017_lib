@@ -1,44 +1,23 @@
 #include <stdio.h>
 #include <time.h>
 
-#include "stack/stack.h"
 #include "stack/stack_func.h"
+#include "queue/queue_func.h"
 
 int main()  {
     srand(time(NULL));		//funzione per la generazione casuale di valori
 
-	STACK pila = stack_init();	//inizializzazione della struttura
+	int choice;
+	do  {
+		printf("Quale libreria vuoi utilizzare?\n\t1. Stack\t2. Coda\n\nSCELTA: ");
+		if((choice = io_getInteger()) < 1 || choice > 2)
+			printf("ATTENZIONE: Valore non valido\n\n");
+	}while(choice < 1 || choice > 2);
 
-	int choiceMenu;
-	do	{
-		io_clearScreen();
-		switch(choiceMenu = stack_func_menu(stack_isEmpty(pila)))	{	//chiamata del menu principale con scelta dell'albero con controllo di esistenza della pila
-			case 1:
-				printf("GENERAZIONE STACK\n\n");
-				stack_func_generate(pila);
-				break;
-			case 2:
-				printf("INSERIMENTO NUOVO ELEMENTO NELLO STACK\n\n");
-                stack_func_insertKey(pila);
-				break;
-			case 3:
-				printf("STAMPA STACK\n\n");
-                stack_func_print(pila);
-				break;
-			case 4:
-				printf("ESTRAZIONE ELEMENTO IN TESTA\n\n");
-				stack_func_extract(pila);
-				break;
-            case 5:
-				printf("CANCELLAZIONE STACK\n\n");
-				stack_func_delete(pila);
-				break;
-            case 6:
-				printf("SESSIONE TERMINATA\n\n");
-		}
-		io_pressKey();
-	}while(choiceMenu != 6);
+	if(choice == 1)
+		stack_func_main();
+	else if(choice == 2)
+		queue_func_main();
 
-	pila = stack_free(pila, 1); //con il parametro '1', dealloco completamente lo stack
 	return 1;
 }

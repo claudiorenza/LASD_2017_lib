@@ -7,19 +7,46 @@ CC      = gcc
 CCFLAGS = -g -Wall
 RM      = rm -rf
 
-SRC = io/random.c \
-	io/io.c \
-	stack/stack.c \
+SRC_IO = io/random.c \
+	io/io.c
+
+SRC_S = stack/stack.c \
 	stack/stack_func.c
+
+SRC_Q = QUEUE/QUEUE.c \
+	QUEUE/queue_func.c
+
+SRC = $(SRC_IO) $(SRC_S) $(SRC_Q)
+
+
+OBJ_IO = $(SRC_IO:.c=.o)
+
+OBJ_S = $(SRC_S:.c=.o)
+
+OBJ_Q = $(SRC_Q:.c=.o)
 
 OBJ = $(SRC:.c=.o)
 
 default: all
 
 all: $(OBJ)
-	$(CC) $(CCFLAGS) $(SRC) -o stackApp main.c
+	$(CC) $(CCFLAGS) $(SRC) -o mainLib main.c
 	@echo "Build complete"
 	
+stack: $(OBJ_IO) $(OBJ_S)
+	$(CC) $(CCFLAGS) $(SRC_IO) $(SRC_S) -o stack/stackLib stack/main.c
+
+QUEUE: $(OBJ_IO) $(OBJ_Q)
+	$(CC) $(CCFLAGS) $(SRC_IO) $(SRC_Q) -o queue/queueLib queue/main.c
+
 clean:
-	$(RM) *.dSYM stack/*.o *.o stackApp
+	$(RM) *.dSYM stack/*.o QUEUE/*.o io/*.o *.o mainLib
+	@echo "Clean complete"
+
+clean_stack:
+	$(RM) *.dSYM stack/*.o io/*.o *.o stack/stackLib
+	@echo "Clean complete"
+	
+clean_queue:
+	$(RM) *.dSYM QUEUE/*.o io/*.o *.o queue/queueLib
 	@echo "Clean complete"

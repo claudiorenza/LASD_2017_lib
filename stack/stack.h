@@ -4,16 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../io/random.h"
-
 #define MAX_array 256
 
 typedef int ** STACK;
 typedef int * STACKel;
 
 STACK stack_init();
-
-void stack_func_generate(STACK pila);
 
 void stack_push(STACK pila, int key);
 

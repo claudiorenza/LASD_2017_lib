@@ -1,5 +1,42 @@
 #include "stack_func.h"
 
+//Funzione prinicpale degli Stack
+void stack_func_main()  {
+	STACK pila = stack_init();	//inizializzazione della struttura
+
+	int choiceMenu;
+	do	{
+		io_clearScreen();
+		switch(choiceMenu = stack_func_menu(stack_isEmpty(pila)))	{	//chiamata del menu principale con scelta dell'albero con controllo di esistenza della pila
+			case 1:
+				printf("GENERAZIONE STACK\n\n");
+				stack_func_generate(pila);
+				break;
+			case 2:
+				printf("INSERIMENTO NUOVO ELEMENTO NELLO STACK\n\n");
+                stack_func_insertKey(pila);
+				break;
+			case 3:
+				printf("STAMPA STACK\n\n");
+                stack_func_print(pila);
+				break;
+			case 4:
+				printf("ESTRAZIONE ELEMENTO IN TESTA\n\n");
+				stack_func_extract(pila);
+				break;
+            case 5:
+				printf("CANCELLAZIONE STACK\n\n");
+				stack_func_delete(pila);
+				break;
+            case 6:
+				printf("SESSIONE TERMINATA\n\n");
+		}
+		io_pressKey();
+	}while(choiceMenu != 6);
+
+	pila = stack_free(pila, 1); //con il parametro '1', dealloco completamente lo stack
+}
+
 //Interfaccia utente
 int stack_func_menu(int isEmpty)	{
 	int choiceMenu;
@@ -22,8 +59,6 @@ int stack_func_menu(int isEmpty)	{
     io_clearScreen();   //pulizia dello schermo del terminale
 	return choiceMenu;
 }
-
-
 
 //Generazione di uno Stack con valori randomici
 void stack_func_generate(STACK pila) {
@@ -56,9 +91,10 @@ void stack_func_generate(STACK pila) {
     stack_func_print(pila);
 }
 
+//Inserimento in input del valore nello Stack
 void stack_func_insertKey(STACK pila)   {
     if(!stack_isFull(pila)) {
-    int val;
+        int val;
         do  {
             printf("Quale valore vuoi inserire nello Stack? (1-%d): ", MAX_array);
             if((val = io_getInteger()) < 1 || val > MAX_array)
@@ -72,6 +108,7 @@ void stack_func_insertKey(STACK pila)   {
         printf("ATTENZIONE: lo Stack è pieno\n\n");
 }
 
+//Estrazione con conferma dell'elemento dello Stack
 void stack_func_extract(STACK pila) {
     printf("Valore in testa nello Stack: %d\n", stack_top(pila));   //nel Tableau il valore minimo è situato alla radice [1][1], con accesso a tempo costante O(1)
     char choice;
@@ -91,6 +128,7 @@ void stack_func_extract(STACK pila) {
     }
 }
 
+//Eliminazione con conferma dello Stack
 void stack_func_delete(STACK pila)  {
     char choice;
     do  {
@@ -108,6 +146,7 @@ void stack_func_delete(STACK pila)  {
     }
 }
 
+//Stampa dello Stack
 void stack_func_print(STACK pila)  {
     stack_print(pila);
     printf("\tNumero elementi: %d\n", *(pila[0]));

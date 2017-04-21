@@ -12,7 +12,11 @@
 typedef int ** STACK;
 typedef int * STACKel;
 
+void stack_func_main();
+
 int stack_func_menu(int isEmpty);
+
+void stack_func_generate(STACK pila);
 
 void stack_func_insertKey(STACK pila);
 
