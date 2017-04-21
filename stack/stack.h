@@ -18,7 +18,6 @@ int stack_pop(STACK pila);
 int stack_top(STACK pila);
 
 STACK stack_free(STACK pila, int del_complete);
-
 STACKel stack_freeNode(STACKel curr);
 
 void stack_print(STACK pila);

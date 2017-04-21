@@ -16,7 +16,7 @@ void queue_func_main();
 
 int queue_func_menu(int isEmpty);
 
-void queue_func_generate(QUEUE coda, int n_elem);
+void queue_func_generate(QUEUE coda);
 
 void queue_func_insertKey(QUEUE coda);
 
@@ -25,3 +25,6 @@ void queue_func_extract(QUEUE coda);
 void queue_func_delete(QUEUE coda);
 
 void queue_func_print(QUEUE coda);
+
+
+#endif

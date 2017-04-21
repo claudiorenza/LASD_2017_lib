@@ -1,32 +1,32 @@
 #include "queue_func.h"
 
 //Funzione prinicpale delle Codde
-void coda_func_main()  {
-	CODA coda = coda_init();	//inizializzazione della struttura
+void queue_func_main()  {
+	QUEUE coda = queue_init();	//inizializzazione della struttura
 
 	int choiceMenu;
 	do	{
 		io_clearScreen();
-		switch(choiceMenu = coda_func_menu(coda_isEmpty(coda)))	{	//chiamata del menu principale con scelta dell'albero con controllo di esistenza della coda
+		switch(choiceMenu = queue_func_menu(queue_isEmpty(coda)))	{	//chiamata del menu principale con scelta dell'albero con controllo di esistenza della coda
 			case 1:
 				printf("GENERAZIONE CODA\n\n");
-				coda_func_generate(coda);
+				queue_func_generate(coda);
 				break;
 			case 2:
 				printf("INSERIMENTO NUOVO ELEMENTO NELLA CODA\n\n");
-                coda_func_insertKey(coda);
+                queue_func_insertKey(coda);
 				break;
 			case 3:
 				printf("STAMPA CODA\n\n");
-                coda_func_print(coda);
+                queue_func_print(coda);
 				break;
 			case 4:
 				printf("ESTRAZIONE ELEMENTO IN TESTA\n\n");
-				coda_func_extract(coda);
+				queue_func_extract(coda);
 				break;
             case 5:
 				printf("CANCELLAZIONE CODA\n\n");
-				coda_func_delete(coda);
+				queue_func_delete(coda);
 				break;
             case 6:
 				printf("SESSIONE TERMINATA\n\n");
@@ -34,7 +34,7 @@ void coda_func_main()  {
 		io_pressKey();
 	}while(choiceMenu != 6);
 
-	coda = coda_free(coda, 1); //con il parametro '1', dealloco completamente lo CODA
+	coda = queue_free(coda, 1); //con il parametro '1', dealloco completamente lo CODA
 }
 
 //Interfaccia utente
@@ -62,7 +62,7 @@ int queue_func_menu(int isEmpty)	{
 
 
 //Inserisce valori random nella Coda
-void queue_func_generate(QUEUE coda, int n_elem){
+void queue_func_generate(QUEUE coda){
     int idx, n_elem;
     if(!queue_isEmpty(coda))	{	//se è già presente, chiedo al'utente quale operazione effettuare sulla Coda
         int choice;

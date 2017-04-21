@@ -3,7 +3,7 @@
 //Inizializzazione della Coda di MAX_array elementi
 QUEUE queue_init() {
     QUEUE coda = NULL;
-    if(coda = (int **)calloc(MAX_array+2,sizeof(int *)))    {
+    if((coda = (int **)calloc(MAX_array+2,sizeof(int *))))   {
         if(!(coda[0] = (int *)malloc(sizeof(int))) || !(coda[MAX_array] = (int *)malloc(sizeof(int))) || !(coda[MAX_array+1] = (int *)malloc(sizeof(int))))  {
             printf("[MEM] ATTENZIONE: Problema di allocazione QUEUEel - queue_init\n");
 			exit(1);
@@ -22,7 +22,7 @@ QUEUE queue_init() {
 //Inserimento in Coda dell'elemento
 void queue_enqueue(QUEUE coda, int key) {
     if (!queue_isFull(coda)) {
-        if(coda[coda[MAX_array]] = (int *)malloc(sizeof(int)))  {
+        if((coda[*(coda[MAX_array])] = (int *)malloc(sizeof(int))))  {
             *(coda[*(coda[MAX_array])]) = key;
             *(coda[MAX_array]) = (*(coda[MAX_array]) % (MAX_array-1)) + 1; //aggiorno l'indice dell'ultima posizione
             *(coda[MAX_array]) += 1;    //incremento il contatore del numero di elementi
