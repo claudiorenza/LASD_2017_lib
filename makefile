@@ -16,7 +16,10 @@ SRC_S = stack/stack.c \
 SRC_Q = queue/queue.c \
 	queue/queue_func.c
 
-SRC = $(SRC_IO) $(SRC_S) $(SRC_Q)
+SRC_T = tree/treeABR.c \
+	tree/treeABR_func.c
+
+SRC = $(SRC_IO) $(SRC_S) $(SRC_Q) $(SRC_T)
 
 
 OBJ_IO = $(SRC_IO:.c=.o)
@@ -24,6 +27,8 @@ OBJ_IO = $(SRC_IO:.c=.o)
 OBJ_S = $(SRC_S:.c=.o)
 
 OBJ_Q = $(SRC_Q:.c=.o)
+
+OBJ_T = $(SRC_T:.c=.o)
 
 OBJ = $(SRC:.c=.o)
 
@@ -35,18 +40,27 @@ all: $(OBJ)
 	
 stack: $(OBJ_IO) $(OBJ_S)
 	$(CC) $(CCFLAGS) $(SRC_IO) $(SRC_S) -o stack/stackLib stack/main.c
+	@echo "stackLib: Build complete"
 
-QUEUE: $(OBJ_IO) $(OBJ_Q)
+queue: $(OBJ_IO) $(OBJ_Q)
 	$(CC) $(CCFLAGS) $(SRC_IO) $(SRC_Q) -o queue/queueLib queue/main.c
+	@echo "queueLib: Build complete"
+
+tree: $(OBJ_IO) $(OBJ_T)
+	$(CC) $(CCFLAGS) $(SRC_IO) $(SRC_T) -o tree/treeABRLib tree/main.c
+	@echo "treeLib: Build complete"
 
 clean:
-	$(RM) *.dSYM stack/*.o queue/*.o io/*.o *.o mainLib
+	$(RM) *.dSYM stack/*.o queue/*.o tree/*.o io/*.o *.o mainLib
 	@echo "Clean complete"
 
 clean_stack:
 	$(RM) *.dSYM stack/*.o io/*.o *.o stack/stackLib
-	@echo "Clean complete"
+	@echo "stackLib: Clean complete"
 	
 clean_queue:
-	$(RM) *.dSYM queue/*.o io/*.o *.o queue/queueLib
-	@echo "Clean complete"
+	$(RM) *queueLib: Clean complete"
+
+clean_tree:
+	$(RM) *.dSYM tree/*.o io/*.o *.o tree/treeABRib
+	@echo "treeLib: Clean complete"

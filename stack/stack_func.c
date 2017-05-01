@@ -110,7 +110,7 @@ void stack_func_insertKey(STACK pila)   {
 
 //Estrazione con conferma dell'elemento dello Stack
 void stack_func_extract(STACK pila) {
-    printf("Valore in testa nello Stack: %d\n", stack_top(pila));   //nel Tableau il valore minimo è situato alla radice [1][1], con accesso a tempo costante O(1)
+    printf("Valore in testa nello Stack: %d\n", stack_top(pila));
     char choice;
     do  {
         printf("Desideri estrarlo? (S/N): ");

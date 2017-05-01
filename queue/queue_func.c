@@ -111,7 +111,7 @@ void queue_func_insertKey(QUEUE coda)   {
 
 //Estrazione con conferma dell'elemento della Coda
 void queue_func_extract(QUEUE coda) {
-    printf("Valore in testa nella Coda: %d\n", queue_head(coda));   //nel Tableau il valore minimo è situato alla radice [1][1], con accesso a tempo costante O(1)
+    printf("Valore in testa nella Coda: %d\n", queue_head(coda));
     char choice;
     do  {
         printf("Desideri estrarlo? (S/N): ");

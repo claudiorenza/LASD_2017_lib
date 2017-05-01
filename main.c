@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 
-#include "stack/stack_func.h"
-#include "queue/queue_func.h"
+#include "tree/treeABR_func.h"
 
 int main()  {
     srand(time(NULL));		//funzione per la generazione casuale di valori
@@ -12,15 +11,18 @@ int main()  {
 	int choice;
 	do  {
 
-		printf("Quale libreria vuoi utilizzare?\n\t1. Stack\t2. Coda\n\nSCELTA: ");
-		if((choice = io_getInteger()) < 1 || choice > 2)
+		printf("Quale libreria vuoi utilizzare?\n\t1. Stack\t2. Coda\t3. Albero\n\nSCELTA: ");
+		if((choice = io_getInteger()) < 1 || choice > 3)
 			printf("ATTENZIONE: Valore non valido\n\n");
-	}while(choice < 1 || choice > 2);
+	}while(choice < 1 || choice > 3);
 
 	if(choice == 1)
-		stack_func_main();
+		stackABR_func_main();
 	else if(choice == 2)
 		queue_func_main();
+	else if(choice == 3)
+		treeABR_func_main();
 
+	io_clearScreen();
 	return 1;
 }
