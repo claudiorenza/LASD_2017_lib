@@ -1,14 +1,14 @@
 #include "treeABR.h"
 
 //Inserimento del nodo nell'albero
-TREE treeABR_insertKey(TREE T, int key)	{
+void treeABR_insertKey(TREE T, int key)	{
 	if(T)	{
 		if(key <= (*T)->elem)	//confronto dei valori con il tipo di dato dell'albero
 			treeABR_insertKey((*T)->sx, key);
 		else if(key > (*T)->elem);
 			treeABR_insertKey((*T)->dx, key);
 	} else	
-		(*T) = treeABR_creaNodo(key);
+		T = treeABR_creaNodo(key);
 	return T;
 }
 
