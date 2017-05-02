@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
-
+#include "queue/queue_func.h"
+#include "stack/stack_func.h"
 #include "tree/treeABR_func.h"
 
 int main()  {
