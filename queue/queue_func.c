@@ -97,10 +97,10 @@ void queue_func_insertKey(QUEUE coda)   {
     if(!queue_isFull(coda)) {
         int val;
         do  {
-            printf("Quale valore vuoi inserire nella Coda? (1-%d): ", MAX_array);
-            if((val = io_getInteger()) < 1 || val > MAX_array)
+            printf("Quale valore vuoi inserire nella Coda?: ");
+            if((val = io_getInteger()) < 1)
                 printf("ATTENZIONE: Valore non valido\n\n");
-        }while(val < 1 || val > MAX_array);
+        }while(val < 1);
 
         queue_enqueue(coda, val);
         printf("\n");
