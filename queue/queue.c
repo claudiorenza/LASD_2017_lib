@@ -25,7 +25,7 @@ void queue_enqueue(QUEUE coda, int key) {
         if((coda[*(coda[MAX_array])] = (int *)malloc(sizeof(int))))  {
             *(coda[*(coda[MAX_array])]) = key;
             *(coda[MAX_array]) = (*(coda[MAX_array]) % (MAX_array-1)) + 1; //aggiorno l'indice dell'ultima posizione
-            *(coda[MAX_array]) += 1;    //incremento il contatore del numero di elementi
+            *(coda[MAX_array+1]) += 1;    //incremento il contatore del numero di elementi
         } else  {
             printf("[MEM] ATTENZIONE: Problema di allocazione QUEUEel - queue_init\n");
 		    exit(1);
@@ -43,7 +43,7 @@ int queue_dequeue(QUEUE coda){
         key = *(coda[*(coda[0])]);   //ricavo il valore dalla testa attuale della Coda
         coda[*(coda[0])] = queue_freeNode(coda[*(coda[0])]);
         *(coda[0]) = (*(coda[0]) % (MAX_array-1)) + 1; //aggiorno l'indice della testa
-        *(coda[MAX_array]) -= 1;    //decremento il contatore del numero di elementi
+        *(coda[MAX_array+1]) -= 1;    //decremento il contatore del numero di elementi
         if(queue_isEmpty(coda)) {   //se ho svuotato la Coda
             *(coda[0]) = 1;         //resetto il valore degli indici di testa e coda
             *(coda[MAX_array]) = 1;
