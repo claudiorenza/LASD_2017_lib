@@ -17,7 +17,7 @@ int main()  {
 	}while(choice < 1 || choice > 3);
 
 	if(choice == 1)
-		stackABR_func_main();
+		stack_func_main();
 	else if(choice == 2)
 		queue_func_main();
 	else if(choice == 3)
