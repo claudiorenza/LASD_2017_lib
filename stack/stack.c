@@ -1,9 +1,9 @@
 #include "stack.h"
 
-//Inizializzazione dello Stack di MAX_array elementi
+//Inizializzazione dello Stack di MAX_stack elementi
 STACK stack_init() {
 	STACK pila = NULL;
-    if((pila = (int **)calloc(MAX_array, sizeof(int *))))	{
+    if((pila = (int **)calloc(MAX_stack, sizeof(int *))))	{
 		if(!(pila[0] = (int *)malloc(sizeof(int))))	{
 			printf("[MEM] ATTENZIONE: Problema di allocazione STACKel - stack_init\n");
 			exit(1);
@@ -99,7 +99,7 @@ int stack_isEmpty(STACK pila){
 
 //Controllo dello Stack vuoto
 int stack_isFull(STACK pila){
-	if(*(pila[0]) == MAX_array)
+	if(*(pila[0]) == MAX_stack)
 		return 1;
 	return 0;
 }

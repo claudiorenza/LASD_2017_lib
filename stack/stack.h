@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_array 256
+#define MAX_stack 256
 
 typedef int ** STACK;
 typedef int * STACKel;
