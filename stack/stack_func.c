@@ -80,13 +80,13 @@ void stack_func_generate(STACK pila) {
     }
     
     do  {
-        printf("Quanti elementi vuoi inserire nello Stack? (1-%d): ", MAX_stack-*(pila[0]));
-        if((n_elem = io_getInteger()) < 1 || n_elem > MAX_stack-*(pila[0]))
+        printf("Quanti elementi vuoi inserire nello Stack? (1-%d): ", MAX_array-*(pila[0]));
+        if((n_elem = io_getInteger()) < 1 || n_elem > MAX_array-*(pila[0]))
 			printf("ATTENZIONE: Valore non valido\n\n");
-	}while(n_elem < 1 || n_elem > MAX_stack-*(pila[0]));
+	}while(n_elem < 1 || n_elem > MAX_array-*(pila[0]));
 
     for(idx=0;idx<n_elem;idx++)
-        stack_push(pila, random_num(1, MAX_stack));	//inserisce un numero casuale compreso fra 1 e MAX_stack
+        stack_push(pila, random_num(1, MAX_array));	//inserisce un numero casuale compreso fra 1 e MAX_array
     printf("\n");
     stack_func_print(pila);
 }
@@ -96,10 +96,10 @@ void stack_func_insertKey(STACK pila)   {
     if(!stack_isFull(pila)) {
         int val;
         do  {
-            printf("Quale valore vuoi inserire nello Stack? (1-%d): ", MAX_stack);
-            if((val = io_getInteger()) < 1 || val > MAX_stack)
+            printf("Quale valore vuoi inserire nello Stack? (1-%d): ", MAX_array);
+            if((val = io_getInteger()) < 1 || val > MAX_array)
                 printf("ATTENZIONE: Valore non valido\n\n");
-        }while(val < 1 || val > MAX_stack);
+        }while(val < 1 || val > MAX_array);
 
         stack_push(pila, val);
         printf("\n");
