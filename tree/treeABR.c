@@ -1,26 +1,28 @@
 #include "treeABR.h"
 
-//Inserimento del nodo nell'albero
+//Inserimento del nodo nell'albero senza duplicati
 void treeABR_insertKey(TREE T, int key)	{
 	if(*T)	{		//se la "scatola" ha qualcosa al suo interno
 		if(key <= (*T)->elem)	//confronto il valore 'key' con quello presente al suo interno
 			treeABR_insertKey(&(*T)->sx, key);	//se 'key' è più piccolo, scendo a sinistra
-		else /* key > (*T)->elem) */
+		else if(key > (*T)->elem)
 			treeABR_insertKey(&(*T)->dx, key);	//altrimenti, a destra
-	} else	{	//se non c'è niente dentro la "scatola"
-		TREEel T_new = NULL;
-		if((T_new = (struct Albero *)malloc(sizeof(struct Albero))))	{	//alloco (con controllo) il contenuto da inserire nella "scatola"
-			T_new->elem = key;
-			T_new->sx = NULL;	//che sono vuote
-			T_new->dx = NULL;
-			*T = T_new;
-		} else	{
-			printf("[MEM] ATTENZIONE: Problema di allocazione TREEel - treeABR_creaNodo\n");
-			exit(1);
-		}
-	}
+	} else	//se non c'è niente dentro la "scatola"
+		*T = treeABR_createNode(key);
 }
 
+TREEel treeABR_createNode(int key)	{
+	TREEel T_new = NULL;
+	if((T_new = (struct Albero *)malloc(sizeof(struct Albero))))	{	//alloco (con controllo) il contenuto da inserire nella "scatola"
+		T_new->elem = key;
+		T_new->sx = NULL;	//che sono vuote
+		T_new->dx = NULL;
+	} else	{
+		printf("[MEM] ATTENZIONE: Problema di allocazione TREEel - treeABR_creaNodo\n");
+		exit(1);
+	}
+	return T_new;
+}
 
 //Eliminazione ricorsiva dei nodi in postOrder
 void treeABR_delete(TREE T)	{
