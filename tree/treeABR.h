@@ -14,7 +14,6 @@ typedef struct Albero ** TREE;
 typedef struct Albero * TREEel;
 
 void treeABR_insertKey(TREE T, int key);
-TREEel treeABR_createNode(int key);
 
 void treeABR_delete(TREE T);
 
