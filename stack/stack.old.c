@@ -1,8 +1,8 @@
 #include "stack.h"
 
-//Inizializzazione dello stack di MAX_array elementi
+//Inizializzazione dello stack di MAX_stack elementi
 STACK stack_init() {
-    STACK pila = (int **)calloc(MAX_array, sizeof(int *));
+    STACK pila = (int **)calloc(MAX_stack, sizeof(int *));
 	pila[0] = (int *)malloc(sizeof(int));
 	*(pila[0]) = 0;
     return pila;
@@ -89,7 +89,7 @@ int stack_isEmpty(STACK pila){
 
 // Ritorna 1 se lo STACK e' pieno, 0 altrimenti
 int stack_isFull(STACK pila){
-	if(*(pila[0]) == MAX_array)
+	if(*(pila[0]) == MAX_stack)
 		return 1;
 	return 0;
 }
