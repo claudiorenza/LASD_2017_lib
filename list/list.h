@@ -5,27 +5,18 @@ typedef struct CodaPrAlbero * PRQUEUEnode;
 
 
 struct Lista   {
-    int key;
+    int weight;
+    int salita;
     struct Lista *next;
 };
 typedef struct Lista * LIST;
 
-struct RootLista  {
-    LIST L;
-    LIST L_last;    //puntatore all'ultimo elemento della lista
-};
-typedef struct RootListaAlbero * ROOTlist;
 
+LIST list_newNode(int weight, int salita);
 
-ROOTlist list_init();
+void list_insertHead(LIST lista, int key);
 
-LIST list_newNode(int key);
-
-void list_insertHead(ROOTlist lista, int key);
-
-void list_insertAppend(ROOTlist lista, int key);
-
-void list_visit(ROOTlist lista, PRQUEUEnode top);
+void list_delKey(LIST lista, int key);
 
 
 #endif // LIST_H_INCLUDED
