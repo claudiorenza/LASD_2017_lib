@@ -5,8 +5,8 @@ typedef struct CodaPrAlbero * PRQUEUEnode;
 
 
 struct Lista   {
+    int vrtx_dst;
     int weight;
-    int salita;
     struct Lista *next;
 };
 typedef struct Lista * LIST;
@@ -18,5 +18,6 @@ void list_insertHead(LIST lista, int key);
 
 void list_delKey(LIST lista, int key);
 
+void list_print(LIST L_curr);
 
 #endif // LIST_H_INCLUDED

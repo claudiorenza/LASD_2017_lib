@@ -122,7 +122,7 @@ int *graph_list_BFS(GRAPHlistlist *grafo_list, int i_src)  {
     color[i_src] = 'g'; //GRIGIO sul vertice sorgente
     pred[i_src]= -1;  //che non ha predecessori
     queue_enqueue(coda, i_src);
-    while(!queue_check_empty(coda))    {    //ciclo fin quando non svuoto la coda
+    while(!queue_isEmpty(coda))    {    //ciclo fin quando non svuoto la coda
         idx = queue_dequeue(coda);    //estraggo la testa della Coda
         adj_curr = grafo_list[idx]->adj;  //prendo la Lista di Adiacenza
         while(adj_curr) {

@@ -3,14 +3,10 @@
 
 #include <stdio.h>
 #include <ctype.h>
+#include <math.h>
 #include "../io/io.h"
 #include "../io/random.h"
 #include "queue.h"
-
-#define MAX_array 256
-
-typedef int ** QUEUE;
-typedef int * QUEUEel;
 
 void queue_func_main();
 

@@ -1,10 +1,10 @@
 #include "list.h"
 
 //Nuovo nodo della lista
-LIST list_newNode(int weight, int salita)    {
+LIST list_newNode(int vrtx_dst, int weight)    {
     LIST node = (struct Lista *)malloc(sizeof(struct Lista));
+    node->vrtx_dst = salita;
     node->weight = weight;
-    node->salita = salita;
     node->next = NULL;
     printf("DEBUG newNode: [%d]\n", node->key);
     return node;
@@ -40,7 +40,7 @@ void list_delKey(LIST lista, int key) {
         printf("ATTENZIONE: elemento della lista non presente\n\n");
 }
 
-//Eliminazione elemento della lista
+//Stampa della Lista
 void list_print(LIST L_curr) {
     while(L_curr) {   //ciclo fin quando non trovo la chiave
         printf("%d -> ", L_curr->key);

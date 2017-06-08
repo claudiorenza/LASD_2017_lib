@@ -34,7 +34,7 @@ void queue_func_main()  {
 		io_pressKey();
 	}while(choiceMenu != 6);
 
-	coda = queue_free(coda, 1); //con il parametro '1', dealloco completamente lo CODA
+	free(coda);
 }
 
 //Interfaccia utente
@@ -73,21 +73,25 @@ void queue_func_generate(QUEUE coda){
                 printf("ATTENZIONE: Valore non valido\n\n");
         }while(choice < 1 || choice > 2);
         if(choice == 1) {
-            coda = queue_free(coda, 0);   //con '0' in parametro non elimino completamente la Coda ma solo tutti i puntatori al suo interno
+            queue_delete(coda);   //con '0' in parametro non elimino completamente la Coda ma solo tutti i puntatori al suo interno
             printf("\n");
             if(queue_isEmpty(coda))
                 printf("Coda eliminata\n\n");
         }
     }
-    
+    int n_max;
+    if(coda[0] != 0)    //se la coda non è vuota
+        n_max = MAX_queue-(abs(coda[0] - coda[MAX_queue+1]));
+    else
+        n_max = MAX_queue;
     do  {
-        printf("Quanti elementi vuoi inserire nella Coda? (1-%d): ", MAX_array-*(coda[MAX_array+1]));
-        if((n_elem = io_getInteger()) < 1 || n_elem > MAX_array-*(coda[MAX_array+1]))
+        printf("Quanti elementi vuoi inserire nella Coda? (1-%d): ", n_max);
+        if((n_elem = io_getInteger()) < 1 || n_elem > n_max)
 			printf("ATTENZIONE: Valore non valido\n\n");
-	}while(n_elem < 1 || n_elem > MAX_array-*(coda[MAX_array+1]));
+	}while(n_elem < 1 || n_elem > n_max);
 
     for(idx=0;idx<n_elem;idx++)
-        queue_enqueue(coda, random_num(1, MAX_array));	//inserisce un numero casuale compreso fra 1 e MAX_array
+        queue_enqueue(coda, random_num(1, MAX_queue));	//inserisce un numero casuale compreso fra 1 e MAX_queue
     printf("\n");
     queue_func_print(coda);
 }
@@ -111,7 +115,7 @@ void queue_func_insertKey(QUEUE coda)   {
 
 //Estrazione con conferma dell'elemento della Coda
 void queue_func_extract(QUEUE coda) {
-    printf("Valore in testa nella Coda: %d\n", queue_head(coda));
+    printf("Valore in testa nella Coda: %d\n", coda[coda[0]]);
     char choice;
     do  {
         printf("Desideri estrarlo? (S/N): ");
@@ -140,7 +144,7 @@ void queue_func_delete(QUEUE coda)  {
     }while(choice != 'S' && choice != 'N');
 
     if(choice == 'S')   {
-        coda = queue_free(coda, 0);   //con '0' in parametro non elimino completamente la Coda ma solo tutti i puntatori al suo interno
+        queue_delete(coda);   //con '0' in parametro non elimino completamente la Coda ma solo tutti i puntatori al suo interno
         printf("\n");
         if(queue_isEmpty(coda))
             printf("Coda eliminata\n\n");
@@ -150,5 +154,5 @@ void queue_func_delete(QUEUE coda)  {
 //Stampa della coda
 void queue_func_print(QUEUE coda)  {
     queue_print(coda);
-    printf("\tNumero elementi: %d - Testa: %d - Coda: %d\n", *(coda[MAX_array+1]), *(coda[0]), *(coda[MAX_array]));
+    printf("\tTesta: %d - Coda: %d\n", coda[0], coda[MAX_queue+1]);
 }

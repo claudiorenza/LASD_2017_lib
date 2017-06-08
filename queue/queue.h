@@ -4,30 +4,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_array 256
+#define MAX_queue 5
 
-
-typedef int ** QUEUE;
-typedef int * QUEUEel;
+typedef int * QUEUE;
 
 QUEUE queue_init();
 
-void queue_enqueue(QUEUE coda, int key);
+int queue_isEmpty(QUEUE);
 
-int queue_dequeue(QUEUE coda);
+int queue_isFull(QUEUE);
 
-int queue_head(QUEUE coda);
+void queue_enqueue(QUEUE, int);
 
-QUEUE queue_free(QUEUE coda, int del_complete);
-QUEUEel queue_freeNode(QUEUEel curr);
+int queue_dequeue(QUEUE);
 
-void queue_print(QUEUE coda);
+void queue_delete(QUEUE coda);
+
+void queue_print(QUEUE);
 void queue_print_recv(QUEUE coda);
+
 void queue_reverse(QUEUE coda);
-
-int queue_isEmpty(QUEUE coda);
-
-int queue_isFull(QUEUE coda);
-
 
 #endif
